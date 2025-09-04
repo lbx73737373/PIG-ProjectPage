@@ -43,6 +43,20 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -53,6 +67,7 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">Hybrid-Tower: Fine-grained Pseudo-query Interaction and Generation for Text-to-Video Retrieval</h1>
+            
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
@@ -67,6 +82,8 @@
               <span class="author-block">
                 <a href="#" target="_blank">Xingwu Sun</a><sup>2</sup>,
               </span>
+              <br>
+
               <span class="author-block">
                 <a href="#" target="_blank">Zhanhui Kang</a><sup>2</sup>,
               </span>
@@ -78,6 +95,12 @@
               </span>
             </div>
 
+                        <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Renmin University of China</span>,
+              <span class="author-block"><sup>2</sup>Large Language Model Department, Tencent</span>
+            </div>
+
+
             <div class="columns is-centered is-vcentered" style="margin-top: 0.75rem; margin-bottom: 0.25rem;">
               <div class="column is-narrow has-text-centered">
                 <img src="static/images/Renmin_University_of_China_logo.svg.png" alt="Renmin University of China" style="height: 60px;">
@@ -87,12 +110,13 @@
               </div>
             </div>
 
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>Renmin University of China</span><br>
-              <span class="author-block"><sup>2</sup>Large Language Model Department, Tencent</span>
+
+            <div class="has-text-centered" style="margin-bottom: 1rem;">
+              <span style="color: #ff0000; font-weight: bold; font-size: 2.0rem;">ICCV 2025</span>
             </div>
 
-                  <div class="column has-text-centered">
+            <div class="column has-text-centered">
+
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <!-- <span class="link-block">
@@ -182,7 +206,10 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The Text-to-Video Retrieval (T2VR) task aims to retrieve unlabeled videos by textual queries with the same semantic meanings. Recent CLIP-based approaches have explored two frameworks: Two-Tower versus Single-Tower framework, yet the former suffers from low effectiveness, while the latter suffers from low efficiency. In this study, we explore a new Hybrid-Tower framework that can hybridize the advantages of the Two-Tower and Single-Tower framework, achieving high effectiveness and efficiency simultaneously. We propose a novel hybrid method, Fine-grained Pseudo-query Interaction and Generation for T2VR, ie, F-Pig, which includes a new pseudo-query generator designed to generate a pseudo-query for each video. This enables the video feature and the textual features of pseudo-query to interact in a fine-grained manner, similar to the Single-Tower approaches to hold high effectiveness, even before the real textual query is received. Simultaneously, Our method introduces no additional storage or computational overhead compared to the Two-Tower framework during the inference stage, thus maintaining high efficiency. Extensive experiments on five commonly used text-video retrieval benchmarks, including MSRVTT-1k, MSRVTT-3k, MSVD, VATEX and DiDeMo, demonstrate that our method achieves a significant improvement over the baseline, with an increase of 1.6% ~ 3.9% in R@1. Furthermore, our method matches the efficiency of Two-Tower models while achieving near state-of-the-art performance, highlighting the advantages of the Hybrid-Tower framework.
+            The Text-to-Video Retrieval (T2VR) task aims to retrieve unlabeled videos by textual queries with the same semantic meanings. Recent CLIP-based approaches have explored two frameworks: Two-Tower versus Single-Tower framework, yet the former suffers from low effectiveness, while the latter suffers from low efficiency. In this study, we explore a new Hybrid-Tower framework that can hybridize the advantages of the Two-Tower and Single-Tower framework, achieving high effectiveness and efficiency simultaneously. 
+            We propose a novel hybrid method, Fine-grained Pseudo-query Interaction and Generation for T2VR, ie, PIG, which includes a new pseudo-query generator designed to generate a pseudo-query for each video. This enables the video feature and the textual features of pseudo-query to interact in a fine-grained manner, similar to the Single-Tower approaches to hold high effectiveness, even before the real textual query is received. 
+            Simultaneously, our method introduces no additional storage or computational overhead compared to the Two-Tower framework during the inference stage, thus maintaining high efficiency.
+            Extensive experiments on five commonly used text-video retrieval benchmarks demonstrate that our method achieves a significant improvement over the baseline, with an increase of $1.6\% \sim 3.9\%$ in R@1. Furthermore, our method matches the efficiency of Two-Tower models while achieving near state-of-the-art performance, highlighting the advantages of the Hybrid-Tower framework.
           </p>
         </div>
       </div>
@@ -219,11 +246,12 @@
       <div class="column is-full">
         <h2 class="title is-3">Qualitative Results</h2>
         <div class="has-text-centered">
-          <img src="static/images/fk-vis.jpg" alt="Qualitative Results" style="width:80%; display: block; margin: 0 auto;">
+          <img src="static/images/pig-examples.jpg" alt="Qualitative Results" style="width:80%; display: block; margin: 0 auto;">
         </div>
         <div class="content has-text-justified">
           <p>
-            To analyze the effectiveness of our proposed Informativeness Token Selector (ITS) module, we visualize the selected patch-level tokens on the MSRVTT-1k test dataset. The first row in each example shows the patch-level tokens selected by ITS, which are then fed into the pseudo-query generator for fine-grained pseudo-query generation. The second row shows the attention maps within each frame. The corresponding patch tokens with the phrases in the query are highlighted in the same color. We can see that our selected tokens capture the fine-grained information needed to generate discriminative pseudo-queries.
+            To analyze the effectiveness of our proposed Informativeness Token Selector (ITS) module, we visualize the selected patch-level tokens on the MSRVTT-1k test dataset. 
+            Top row: patch tokens selected by our ITS module, which are then fed into the pseudo-query generator. Bottom row: frame attention maps. The corresponding patch tokens with the phrases in the query are highlighted in the same color.
           </p>
         </div>
       </div>
